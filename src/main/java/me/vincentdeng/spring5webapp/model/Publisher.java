@@ -1,6 +1,7 @@
 package me.vincentdeng.spring5webapp.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * Created by Vincent Deng on 15/7/18
@@ -46,4 +47,26 @@ public class Publisher {
         this.address = address;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Publisher publisher = (Publisher) o;
+        return Objects.equals(id, publisher.id);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Publisher{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }
